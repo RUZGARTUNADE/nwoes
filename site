@@ -1,0 +1,24 @@
+from flask import Flask
+import random
+
+app = Flask(__name__)
+
+gercekler = ["Teknolojik bağımlılıkla mücadele etmenin bir yolu, zevk veren ve ruh halini iyileştiren faaliyetler aramaktır."
+                 "2019'da yapılan bir araştırmaya göre, insanların %60'ından fazlası akıllı telefonlarındaki iş mesajlarına işten ayrıldıktan sonraki 15 dakika içinde yanıt veriyor.",
+                 "Sosyal ağların olumlu ve olumsuz yanları vardır ve bu platformları kullanırken her ikisinin de farkında olmalıyız.",
+                 "Teknolojik bağımlılık çalışması, modern bilimsel araştırmanın en ilgili alanlarından biridir."]
+
+@app.route("/")
+def hello_world():
+    return f'<h1>{random.choice(gercekler)}</h1> <a href="/rastgele_gercek">giriş sayfasına git!</a>'
+
+@app.route("/giris")
+def giris():
+    return '<h1>GİRİŞ SAYFASINA HOŞGELDİNİZ</h1>'
+
+
+@app.route("/yazıtura")
+def yazıtura():
+    return random.choice(["Yazı", "Tura"])
+
+app.run(debug=True)
